@@ -1,23 +1,33 @@
 ﻿using prac17.ViewModel;
 using prac17.ViewModel.Helpers;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace prac17.View
 {
     /// <summary>
     /// Логика взаимодействия для CreaterServerGameView.xaml
     /// </summary>
+    /// 
+
     public partial class CreaterServerGameView : Window
     {
         public static List<TextBlock> spaceforletters = new List<TextBlock>();
-        public CreaterServerGameView()
+        public static List<Button> lettersbuttons = new List<Button>();
+
+        public CreaterServerGameView(string Login)
         {
             InitializeComponent();
-            DataContext = new AdminViewModel();
+            DataContext = new AdminViewModel(PicOfGame,Login);
             GenerateLettersButtons();
             GenerateSpace();
         }
@@ -29,16 +39,17 @@ namespace prac17.View
                 button.Tag = i;
                 button.Command = new BindableCommand(_ => (DataContext as AdminViewModel).clickletter(button));
                 button.Content = (char)(1039 + i);
+                lettersbuttons.Add(button);
                 PanelForLetters.Children.Add(button);
             }
         }
         private void GenerateSpace()
         {
-            for (int i = 1; i < (DataContext as AdminViewModel).PickedWord.ThisWord.Count()+1; i++)
+            for (int i = 1; i < (DataContext as AdminViewModel).PickedWord.ThisWord.Count() + 1; i++)
             {
                 Border border = new Border();
-                border.BorderBrush = Brushes.Black;
-                border.BorderThickness = new Thickness(1, 1, 1, 1);
+                border.BorderBrush = System.Windows.Media.Brushes.Black;
+                border.BorderThickness = new Thickness(0, 0, 0, 1);
                 TextBlock text = new TextBlock();
                 text.Text = "";
                 text.Tag = i;
@@ -47,5 +58,6 @@ namespace prac17.View
                 spaceforletters.Add(text);
             }
         }
+
     }
 }

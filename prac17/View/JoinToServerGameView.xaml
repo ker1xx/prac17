@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:prac17.View"
         mc:Ignorable="d"
-        Title="JoinToServerGameView" Height="450" Width="800">
+        Title="JoinToServerGameView" MinHeight="800" MinWidth="1200">
     <Grid>
-        
+        <Grid.RowDefinitions>
+                    <RowDefinition Height="84*"/>
+                    <RowDefinition Height="336*"/>
+                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="159*"/>
+                    <RowDefinition Height="105*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Игра! Viseliцa" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Height="40" Width="186" Grid.Row="0"/>
+                <Image x:Name="PicOfGame" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <WrapPanel x:Name="PanelForLetters" Grid.Row="3" Margin="0,2,0,0" >
+                    <WrapPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="10"/>
+                            <Setter Property="MinHeight" Value="30"/>
+                            <Setter Property="MaxHeight" Value="30"/>
+                            <Setter Property="MinWidth" Value="60"/>
+                            <Setter Property="MaxWidth" Value="60"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </WrapPanel.Resources>
+                </WrapPanel>
+                <WrapPanel x:Name="PanelForSpaces" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <WrapPanel.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="Margin" Value="20,0,20,0"/>
+                            <Setter Property="MinHeight" Value="40"/>
+                            <Setter Property="MinWidth" Value="40"/>
+                            <Setter Property="MaxHeight" Value="60"/>
+                            <Setter Property="MaxWidth" Value="60"/>
+                        </Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="30"/>
+                        </Style>
+                    </WrapPanel.Resources>
+                </WrapPanel>
+        <Button x:Name="EndGame" Grid.Row="4" VerticalAlignment="Center" Margin="20,0,20,0" Content="Выйти из игры ☹️" Height="20"/>
     </Grid>
 </Window>
