@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Runtime.CompilerServices;
 
 namespace prac17.View
 {
@@ -23,6 +24,7 @@ namespace prac17.View
     {
         public static List<TextBlock> spaceforletters = new List<TextBlock>();
         public static List<Button> lettersbuttons = new List<Button>();
+        public static bool IsConnected = false;
         public JoinToServerGameView(string IP, string Login)
         {
             InitializeComponent();
@@ -43,8 +45,14 @@ namespace prac17.View
                 PanelForLetters.Children.Add(button);
             }
         }
-        private void GenerateSpace()
+        private async Task  GenerateSpace()
         {
+
+            while (!IsConnected)
+            {
+                await Task.Delay(1000);
+            }
+
             for (int i = 1; i < ClientViewModel.PickedWord.ThisWord.Count() + 1; i++)
             {
                 Border border = new Border();

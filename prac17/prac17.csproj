@@ -105,8 +105,8 @@
     <Compile Include="ViewModel\Helpers\Binding.cs" />
     <Compile Include="ViewModel\Helpers\Deserialize.cs" />
     <Compile Include="ViewModel\Helpers\ReceivingFromServer.cs" />
-    <Compile Include="ViewModel\Helpers\TCPLogic\ClientLogic.cs" />
-    <Compile Include="ViewModel\Helpers\TCPLogic\ServerLogic.cs" />
+    <Compile Include="ViewModel\Helpers\TCPLogic\TCPClient.cs" />
+    <Compile Include="ViewModel\Helpers\TCPLogic\TCPServer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\CreaterServerGameView.xaml.cs">
       <DependentUpon>CreaterServerGameView.xaml</DependentUpon>

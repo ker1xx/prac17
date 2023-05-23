@@ -1,5 +1,7 @@
 ﻿using prac17.View;
 using prac17.ViewModel.Helpers;
+using System;
+using System.Windows;
 
 namespace prac17.ViewModel
 {
@@ -34,6 +36,8 @@ namespace prac17.ViewModel
             window.Visibility = System.Windows.Visibility.Collapsed;
             JoinToServerGameView join = new JoinToServerGameView(IPText, Login);    
             join.Show();
+            if (join.DialogResult == false)
+                Environment.Exit(0);
         }
     }
 }

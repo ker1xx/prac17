@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
-using prac17.ViewModel.Helpers.TCPLogic;
 using System.Net.Sockets;
+using System.Text;
+using pratice_6_messenger;
 
 namespace prac17.ViewModel
 {
     internal class AdminViewModel : Binding
     {
         #region peremennie
-        ServerLogic Server;
-        ClientLogic Client;
         Image PicOfGame { get; set; }
         private BitmapImage visImgSource;
         public BitmapImage VisImgSource
@@ -37,7 +36,7 @@ namespace prac17.ViewModel
             }
         }
         public Word PickedWord;
-        private List<Char> LettersInWord = new List<char>() { };
+        private List<char> LettersInWord = new List<char>() { };
         #endregion
         #region binding
         #endregion
@@ -52,15 +51,16 @@ namespace prac17.ViewModel
             Word thisWord = new Word(newWord, 10, null); // создаем словечко
             PickedWord = thisWord; //делаем его глобальным
 
+            TCPServer.OnNewClient += (clientSocket) =>
+            {
+                TCPServer.SendMessageToAll(PickedWord.ThisWord+"/connect");
+            };
+            TCPServer.Start(8888);
+
             for (int i = 0; i < newWord.Length; i++) //добавляем буквы в массив букв слова
                 LettersInWord.Add(newWord[i]);
-            Server = new ServerLogic(new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp), PickedWord.ThisWord); //создание сервера
-                                                                                                                                        //создание сокета клиента
-            Client = new ClientLogic(Login, new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp), "127.0.0.1", true, this); //создание в этом окне клиента
-
-            Server.ListenToClients(); //слушаем клиентов
-
         }
+
         public void clickletter(Button sender) // при клике на букву
         {
             if (PickedWord.AmountOfAttempsRemain > 0)
@@ -134,6 +134,9 @@ namespace prac17.ViewModel
                 }
                 sender.IsEnabled = false; // вырубаем кнопку
                 sender.Visibility = Visibility.Hidden;
+                TCPServer.SendMessageToAll((string)sender.Content);
+                foreach (var b in CreaterServerGameView.lettersbuttons)
+                    b.IsEnabled = false;
                 if (JoinToServerGameView.spaceforletters.All(x => !string.IsNullOrEmpty(x.Text))) //проверяем если нет пустых текстблоков то победа
                     WinGame();
 

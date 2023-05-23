@@ -43,12 +43,18 @@ namespace prac17.ViewModel
             window.Visibility = System.Windows.Visibility.Collapsed;
             CreaterServerGameView creater = new CreaterServerGameView(EnterNicknameTextbox);
             creater.Show();
+            if (creater.DialogResult == false)
+                Environment.Exit(0);
         }
         public void JoinServer()
         {
             window.Visibility = System.Windows.Visibility.Collapsed;
             EnterIPView creater = new EnterIPView(EnterNicknameTextbox);
             creater.Show();
+            if (creater.DialogResult == false)
+            {
+                Environment.Exit(0);
+            }
         }
 
     }

@@ -63,3 +63,16 @@ C:\Users\я\Source\Repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
 C:\Users\я\Source\Repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 C:\Users\я\source\repos\prac17\prac17\obj\Debug\View\EnterIPView.g.cs
 C:\Users\я\source\repos\prac17\prac17\obj\Debug\View\EnterIPView.baml
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\CommonServiceLocator.dll
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.Extras.dll
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.Platform.dll
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.Extras.pdb
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.Extras.xml
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.Platform.pdb
+C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.Platform.xml
+C:\Users\klink\source\repos\prac17\prac17\obj\Debug\View\EnterIPView.baml
+C:\Users\klink\source\repos\prac17\prac17\obj\Debug\View\EnterIPView.g.cs

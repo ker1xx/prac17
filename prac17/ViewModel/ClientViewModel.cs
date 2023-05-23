@@ -11,17 +11,19 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows;
-using prac17.ViewModel.Helpers.TCPLogic;
 using System.Net.Sockets;
 using System.Threading;
+using pratice_6_messenger;
+using System.Windows.Threading;
 
 namespace prac17.ViewModel
 {
     internal class ClientViewModel : Binding
     {
-        #region peremennie
-        Image PicOfGame { get; set; }
-        ClientLogic Client;
+        #region Fields
+        public static bool Connected = false;
+        private Image PicOfGame { get; set; }
+        private TCPClient _client = new TCPClient();
         private BitmapImage visImgSource;
         public BitmapImage VisImgSource
         {
@@ -36,7 +38,7 @@ namespace prac17.ViewModel
             }
         }
         public static Word PickedWord;
-        private List<Char> LettersInWord = new List<char>() { };
+        private List<char> LettersInWord = new List<char>() { };
         #endregion
         #region binding
         public BindableCommand LetterClicked { get; set; }
@@ -45,14 +47,46 @@ namespace prac17.ViewModel
         {
             Word thisWord = new Word("", 10, null); // создаем словечко
             PickedWord = thisWord; //делаем его глобальным
-            Client = new ClientLogic(Login, new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp), IP, false, this);
 
-            Client.Receive(Client.isWroking.Token);
+            _client.OnNewMessage += (msg) =>
+            {
+                if (msg.Contains("/conenct"))
+                {
+                    PickedWord.ThisWord = msg.Substring(0, msg.IndexOf('/'));
 
+                    Dispatcher.CurrentDispatcher.Invoke((Action)(() =>
+                    {
+                        this.PicOfGame = PicOfGame;
+                        PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\Blank.png", UriKind.Relative));
+                        for (int i = 0; i < PickedWord.ThisWord.Length; i++) //добавляем буквы в массив букв слова
+                            LettersInWord.Add(PickedWord.ThisWord[i]);
+                        JoinToServerGameView.IsConnected = true;
+                        
+                    }));
+                }
+                else
+                {
+                    foreach (var b in JoinToServerGameView.lettersbuttons)
+                    {
+                        if (b.Content == msg)
+                        {
+                            clickletter(b);
+                            foreach (var but in JoinToServerGameView.lettersbuttons)
+                                but.IsEnabled = true;
+                            break;
+                        }
+                    }
+                }
+
+            };
+            _client.Connect("127.0.0.1", 8888);
+
+            /*
             this.PicOfGame = PicOfGame;
             PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\Blank.png", UriKind.Relative));
             for (int i = 0; i < PickedWord.ThisWord.Length; i++) //добавляем буквы в массив букв слова
                 LettersInWord.Add(PickedWord.ThisWord[i]);
+            */
 
         }
         public void clickletter(Button sender) // при клике на букву
@@ -130,14 +164,9 @@ namespace prac17.ViewModel
                 sender.Visibility = Visibility.Hidden;
                 if (JoinToServerGameView.spaceforletters.All(x => !string.IsNullOrEmpty(x.Text)))
                     WinGame();
-
             }
             else
                 LoseGame();
-        }
-        public void Recieved()
-        {
-
         }
         private static void showletter(int indexofbutton, string text) // принимает индекс буквы в слова и текст который будет в текстблок
         {
