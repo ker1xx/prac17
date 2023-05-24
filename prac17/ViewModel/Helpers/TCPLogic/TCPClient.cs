@@ -32,15 +32,14 @@ namespace pratice_6_messenger
         {
             _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             _clientSocket.Connect(host, port);
-            isWorking = new CancellationTokenSource();
-            ReceiveMessages(isWorking.Token);
+            ReceiveMessages();
         }
             
         public void Disconnect() { }
 
-        private async Task ReceiveMessages(CancellationToken Token)
+        private async Task ReceiveMessages()
         {
-            while(!Token.IsCancellationRequested)
+            while(true)
             {
                 byte[] buffer = new byte[1024];
                 await _clientSocket?.ReceiveAsync(new ArraySegment<byte>(buffer), SocketFlags.None);

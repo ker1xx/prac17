@@ -59,7 +59,7 @@ namespace pratice_6_messenger
 
                 OnNewClient(newClient);
 
-                ReceiveMessages(newClient);
+                await ReceiveMessages(newClient);
             }
         }
 
@@ -101,7 +101,6 @@ namespace pratice_6_messenger
                 SendMessage(clientToSend, message);
             }
 
-            OnNewMessage(message);
         }
     }
 }

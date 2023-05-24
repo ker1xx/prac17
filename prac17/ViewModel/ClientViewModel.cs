@@ -50,7 +50,7 @@ namespace prac17.ViewModel
 
             _client.OnNewMessage += (msg) =>
             {
-                if (msg.Contains("/conenct"))
+                if (msg.Contains("/connect"))
                 {
                     PickedWord.ThisWord = msg.Substring(0, msg.IndexOf('/'));
 
@@ -61,7 +61,6 @@ namespace prac17.ViewModel
                         for (int i = 0; i < PickedWord.ThisWord.Length; i++) //добавляем буквы в массив букв слова
                             LettersInWord.Add(PickedWord.ThisWord[i]);
                         JoinToServerGameView.IsConnected = true;
-                        
                     }));
                 }
                 else
