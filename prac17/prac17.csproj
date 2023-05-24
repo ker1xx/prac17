@@ -104,7 +104,6 @@
     <Compile Include="ViewModel\Helpers\BindableCommand.cs" />
     <Compile Include="ViewModel\Helpers\Binding.cs" />
     <Compile Include="ViewModel\Helpers\Deserialize.cs" />
-    <Compile Include="ViewModel\Helpers\ReceivingFromServer.cs" />
     <Compile Include="ViewModel\Helpers\TCPLogic\TCPClient.cs" />
     <Compile Include="ViewModel\Helpers\TCPLogic\TCPServer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

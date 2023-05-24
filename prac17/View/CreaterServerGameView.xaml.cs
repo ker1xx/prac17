@@ -45,7 +45,7 @@ namespace prac17.View
         }
         private void GenerateSpace()
         {
-            for (int i = 1; i < (DataContext as AdminViewModel).PickedWord.ThisWord.Count() + 1; i++)
+            for (int i = 1; i < (DataContext as AdminViewModel)._pickedWord.ThisWord.Count() + 1; i++)
             {
                 Border border = new Border();
                 border.BorderBrush = System.Windows.Media.Brushes.Black;

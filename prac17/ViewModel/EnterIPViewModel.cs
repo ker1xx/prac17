@@ -34,10 +34,13 @@ namespace prac17.ViewModel
         private void showgameview()
         {
             window.Visibility = System.Windows.Visibility.Collapsed;
-            JoinToServerGameView join = new JoinToServerGameView(IPText, Login);    
+            JoinToServerGameView join = new JoinToServerGameView(IPText, Login);
             join.Show();
-            if (join.DialogResult == false)
-                Environment.Exit(0);
+            join.Closed +=  new EventHandler(close);
+        }
+        private void close(object sender, EventArgs args)
+        {
+            Environment.Exit(0);
         }
     }
 }

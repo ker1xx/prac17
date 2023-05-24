@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace prac17.ViewModel
 {
@@ -16,7 +17,7 @@ namespace prac17.ViewModel
     {
         MainWindow window;
         #region Properties
-        
+
         private string enterNicknameTextbox;
         public string EnterNicknameTextbox
         {
@@ -43,18 +44,18 @@ namespace prac17.ViewModel
             window.Visibility = System.Windows.Visibility.Collapsed;
             CreaterServerGameView creater = new CreaterServerGameView(EnterNicknameTextbox);
             creater.Show();
-            if (creater.DialogResult == false)
-                Environment.Exit(0);
+            creater.Closed += new EventHandler(close);
         }
         public void JoinServer()
         {
             window.Visibility = System.Windows.Visibility.Collapsed;
             EnterIPView creater = new EnterIPView(EnterNicknameTextbox);
             creater.Show();
-            if (creater.DialogResult == false)
-            {
-                Environment.Exit(0);
-            }
+            creater.Closed += new EventHandler( close);
+        }
+        private void close(object sender, EventArgs args)
+        {
+            Environment.Exit(0);
         }
 
     }

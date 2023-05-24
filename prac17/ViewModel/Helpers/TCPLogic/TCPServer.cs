@@ -7,24 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace pratice_6_messenger
+namespace prac17
 {
     static class TCPServer
     {
         private static Socket _socket;
         private static List<Socket> _clients = new List<Socket>();
-
-        private static List<string> _log = new List<string>();
-        public static List<string> Log
-        {
-            get { return _log; }
-        }
-
-        private static List<string> _messages = new List<string>();
-        public static List<string> Messages
-        {
-            get { return _messages; }
-        }
 
         #region Params
         public static string Name = "Администратор (сервер)";
@@ -32,11 +20,9 @@ namespace pratice_6_messenger
 
         public delegate void NewMessageCallback(string message);
         public delegate void NewClientCallback(Socket client);
-        public delegate void ClientDisconnectCallback(Socket client);
 
         public static event NewMessageCallback OnNewMessage;
         public static event NewClientCallback OnNewClient;
-        public static event ClientDisconnectCallback OnClientDiconnect;
 
         public static void Start(in int port)
         {
@@ -47,8 +33,6 @@ namespace pratice_6_messenger
 
             ListenToClients();
         }
-
-        private static void Stop() { }
 
         private static async Task ListenToClients()
         {
@@ -77,10 +61,7 @@ namespace pratice_6_messenger
                 {
                     continue;
                 }
-                foreach (var b in CreaterServerGameView.lettersbuttons)
-                    b.IsEnabled = true;
-
-                SendMessageToAll(message);
+                OnNewMessage(message);
             }
         }
 

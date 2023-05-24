@@ -19,7 +19,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Text="Список игроков: " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Grid.Row="0"/>
-            <ListBox x:Name="DisplayPlayers" Grid.Row="1"/>
+            <ListBox x:Name="DisplayPlayers" Grid.Row="1" ItemsSource="{Binding Usernames}"/>
             <TextBlock Text="Ваш IP: " VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Grid.Row="2"/>
             <Button x:Name="OfflineServerButton" Grid.Row="3" Content="Отключить сервер"/>
         </Grid>

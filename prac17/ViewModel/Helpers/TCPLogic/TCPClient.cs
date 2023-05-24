@@ -7,21 +7,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace pratice_6_messenger
+namespace prac17
 {
     public class TCPClient
     {
-        private Socket _clientSocket;
-
-        private List<string> _messages = new List<string>();
-        public List<string> Messages
-        {
-            get { return _messages; }
-        }
-        private CancellationTokenSource isWorking;
 
         #region Params
-        public string Name;
+        private Socket _clientSocket;
+
+        public CancellationTokenSource isWorking;
         #endregion
 
         public delegate void NewMessageCallback(string message);
@@ -32,14 +26,13 @@ namespace pratice_6_messenger
         {
             _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             _clientSocket.Connect(host, port);
-            ReceiveMessages();
+            isWorking = new CancellationTokenSource();
+            ReceiveMessages(isWorking.Token);
         }
-            
-        public void Disconnect() { }
-
-        private async Task ReceiveMessages()
+           
+        private async Task ReceiveMessages(CancellationToken Token)
         {
-            while(true)
+            while(!Token.IsCancellationRequested)
             {
                 byte[] buffer = new byte[1024];
                 await _clientSocket?.ReceiveAsync(new ArraySegment<byte>(buffer), SocketFlags.None);

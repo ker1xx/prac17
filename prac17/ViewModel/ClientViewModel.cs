@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows;
 using System.Net.Sockets;
 using System.Threading;
-using pratice_6_messenger;
 using System.Windows.Threading;
 
 namespace prac17.ViewModel
@@ -23,6 +22,7 @@ namespace prac17.ViewModel
         #region Fields
         public static bool Connected = false;
         private Image PicOfGame { get; set; }
+        private bool _isMsgRecived = false;
         private TCPClient _client = new TCPClient();
         private BitmapImage visImgSource;
         public BitmapImage VisImgSource
@@ -39,6 +39,7 @@ namespace prac17.ViewModel
         }
         public static Word PickedWord;
         private List<char> LettersInWord = new List<char>() { };
+        private List<Button> DisabledButtons = new List<Button>() { };
         #endregion
         #region binding
         public BindableCommand LetterClicked { get; set; }
@@ -63,22 +64,31 @@ namespace prac17.ViewModel
                         JoinToServerGameView.IsConnected = true;
                     }));
                 }
+                else if (msg.Contains("/end"))
+                {
+                    _client.isWorking.Cancel();
+                }
                 else
                 {
                     foreach (var b in JoinToServerGameView.lettersbuttons)
                     {
-                        if (b.Content == msg)
+                        if (Convert.ToChar(b.Content) == msg[0])
                         {
+                            _isMsgRecived = true;
                             clickletter(b);
                             foreach (var but in JoinToServerGameView.lettersbuttons)
-                                but.IsEnabled = true;
+                            {
+                                if (!DisabledButtons.Contains(but))
+                                    but.IsEnabled = true;
+                            }
+                            _isMsgRecived = false;
                             break;
                         }
                     }
                 }
 
             };
-            _client.Connect("127.0.0.1", 8888);
+            _client.Connect(IP, 8888);
 
             /*
             this.PicOfGame = PicOfGame;
@@ -99,6 +109,7 @@ namespace prac17.ViewModel
                         if (LettersInWord[i].Equals(Convert.ToChar(Convert.ToString(sender.Content).ToLower()))) //если нашли совпадение
                         {
                             showletter(i, Convert.ToString(sender.Content)); //нужно передать в метод индекс (тег) который у кнопки и у текстблока одинаковый и изменить текст текстблока
+                            DisabledButtons.Add(sender);
                         }
                     }
                 }
@@ -161,6 +172,12 @@ namespace prac17.ViewModel
                 }
                 sender.IsEnabled = false; // вырубаем кнопку
                 sender.Visibility = Visibility.Hidden;
+                if (!_isMsgRecived)
+                {
+                    _client.SendMessage(Convert.ToString(sender.Content));
+                    foreach (var b in JoinToServerGameView.lettersbuttons)
+                        b.IsEnabled = false;
+                }
                 if (JoinToServerGameView.spaceforletters.All(x => !string.IsNullOrEmpty(x.Text)))
                     WinGame();
             }
@@ -174,10 +191,12 @@ namespace prac17.ViewModel
         private void WinGame()
         {
             MessageBox.Show("Ты победил!");
+            _client.SendMessage("/end");
         }
         private void LoseGame()
         {
             MessageBox.Show("Ты проиграл(");
+            _client.SendMessage("/end");
         }
     }
 }
