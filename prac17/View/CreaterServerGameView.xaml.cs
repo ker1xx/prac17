@@ -2,6 +2,7 @@
 using prac17.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -27,9 +28,13 @@ namespace prac17.View
         public CreaterServerGameView(string Login)
         {
             InitializeComponent();
-            DataContext = new AdminViewModel(PicOfGame,Login);
+            DataContext = new AdminViewModel(PicOfGame, Login);
             GenerateLettersButtons();
             GenerateSpace();
+            if (Process.GetProcessesByName("RvRvpnGui").Any())
+                setIP.Text += System.Net.Dns.GetHostByName(System.Net.Dns.GetHostName()).AddressList[0];
+            else
+                setIP.Text += "127.0.0.1";
         }
         private void GenerateLettersButtons()
         {

@@ -12,7 +12,7 @@
         <TextBlock Text="Viseliцa)" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
         <Button x:Name="CreateGameButton" Grid.Row="2"  Content="Начать новую игру" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="10" Command="{Binding CreateServerCommand}"/>
         <Button x:Name="JoinGameButton" Grid.Row="3"  Content="Присоединиться к игре" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Padding="10" Command="{Binding JoinServerCommand}"/>
-        <TextBox x:Name="EnterLogin" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="300" Text="{Binding EnterLoginTextbox}">
+        <TextBox x:Name="EnterLogin" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="300" Text="{Binding Login}">
             <TextBox.Style>
                 <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                     <Style.Resources>

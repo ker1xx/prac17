@@ -49,13 +49,20 @@ namespace prac17.ViewModel
             Word thisWord = new Word("", 10, null); // создаем словечко
             PickedWord = thisWord; //делаем его глобальным
 
-            _client.OnNewMessage += (msg) =>
+            _client.OnConnected += () =>
             {
-                if (msg.Contains("/connect"))
-                {
-                    PickedWord.ThisWord = msg.Substring(0, msg.IndexOf('/'));
+                _client.SendMessage(Login+"/username"); //при подключении срабатывает ивент, отправляющий имя пользователя
+            };
 
-                    Dispatcher.CurrentDispatcher.Invoke((Action)(() =>
+            _client.OnNewMessage += (msg) => //при получении нового смс срабатывает ивент
+            {
+                if (msg.Contains("/connect")) //если есть коннект (сервер отправил сообщение при подключении к нему пользователя,
+                //передающее в себе слово для игры
+                {
+                    PickedWord.ThisWord = msg.Substring(0, msg.IndexOf('/')); //пользователь берет это слово
+
+                    Dispatcher.CurrentDispatcher.Invoke((Action)(() => //ставит в очередь основого потока событие для того, чтобы вьюшка 
+                    //не рисовалась быстрее кода и появились кнопки
                     {
                         this.PicOfGame = PicOfGame;
                         PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\Blank.png", UriKind.Relative));
@@ -64,17 +71,17 @@ namespace prac17.ViewModel
                         JoinToServerGameView.IsConnected = true;
                     }));
                 }
-                else if (msg.Contains("/end"))
+                else if (msg.Contains("/end")) //если есть /end то вырубает таски
                 {
                     _client.isWorking.Cancel();
                 }
-                else
+                else //если просто пришла буква то она ищется в листе с кнопками и имитируется нажатие
                 {
                     foreach (var b in JoinToServerGameView.lettersbuttons)
                     {
                         if (Convert.ToChar(b.Content) == msg[0])
                         {
-                            _isMsgRecived = true;
+                            _isMsgRecived = true; //для имитации нажатия (чтобы еще раз не отправлялось сообщение и оно не циклилось)
                             clickletter(b);
                             foreach (var but in JoinToServerGameView.lettersbuttons)
                             {
@@ -89,13 +96,6 @@ namespace prac17.ViewModel
 
             };
             _client.Connect(IP, 8888);
-
-            /*
-            this.PicOfGame = PicOfGame;
-            PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\Blank.png", UriKind.Relative));
-            for (int i = 0; i < PickedWord.ThisWord.Length; i++) //добавляем буквы в массив букв слова
-                LettersInWord.Add(PickedWord.ThisWord[i]);
-            */
 
         }
         public void clickletter(Button sender) // при клике на букву
@@ -172,13 +172,13 @@ namespace prac17.ViewModel
                 }
                 sender.IsEnabled = false; // вырубаем кнопку
                 sender.Visibility = Visibility.Hidden;
-                if (!_isMsgRecived)
+                if (!_isMsgRecived) //если не имитация то шлет сообщение и вырубает кнопки
                 {
                     _client.SendMessage(Convert.ToString(sender.Content));
                     foreach (var b in JoinToServerGameView.lettersbuttons)
                         b.IsEnabled = false;
                 }
-                if (JoinToServerGameView.spaceforletters.All(x => !string.IsNullOrEmpty(x.Text)))
+                if (JoinToServerGameView.spaceforletters.All(x => !string.IsNullOrEmpty(x.Text))) //если не осталось пустых текстблоков то победа
                     WinGame();
             }
             else
@@ -186,7 +186,7 @@ namespace prac17.ViewModel
         }
         private static void showletter(int indexofbutton, string text) // принимает индекс буквы в слова и текст который будет в текстблок
         {
-            JoinToServerGameView.spaceforletters[indexofbutton].Text = text;
+            JoinToServerGameView.spaceforletters[indexofbutton].Text = text; //ставит в текстблок букву
         }
         private void WinGame()
         {

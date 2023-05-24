@@ -65,7 +65,7 @@ namespace prac17
             }
         }
 
-        private static async Task SendMessage(Socket clientToSend, string message)
+        public static async Task SendMessage(Socket clientToSend, string message)
         {
             byte[] messageBuffer = Encoding.UTF8.GetBytes(message);
             await clientToSend?.SendAsync(new ArraySegment<byte>(messageBuffer), SocketFlags.None);                

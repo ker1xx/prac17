@@ -14,6 +14,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using System.Net.Sockets;
 using System.Text;
+using System.Diagnostics;
 
 namespace prac17.ViewModel
 {
@@ -38,8 +39,8 @@ namespace prac17.ViewModel
         private List<char> L_lettersInWord = new List<char>() { };
         private List<Button> _disabledButtons = new List<Button>() { };
         private bool _isMsgRecived = false;
-        private ObservableCollection<string> _usernames;
-        public ObservableCollection <string> Usernames
+        private ObservableCollection<string> _usernames = new ObservableCollection<string>() { };
+        public ObservableCollection<string> Usernames
         {
             get
             {
@@ -54,7 +55,7 @@ namespace prac17.ViewModel
         #endregion
         public AdminViewModel(Image PicOfGame, string Login)
         {
-
+            Usernames.Add(Login);
             this.PicOfGame = PicOfGame; //картинку делаем глобальной
             PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\Blank.png", UriKind.Relative)); //делаем картинке пустой соурс
 
@@ -63,25 +64,32 @@ namespace prac17.ViewModel
             Word thisWord = new Word(newWord, 10, null); // создаем словечко
             _pickedWord = thisWord; //делаем его глобальным
 
+
             TCPServer.OnNewClient += (clientSocket) =>
             {
-                TCPServer.SendMessageToAll(_pickedWord.ThisWord + "/connect");
+                TCPServer.SendMessage(clientSocket, _pickedWord.ThisWord + "/connect");
             };
             TCPServer.OnNewMessage += (msg) =>
             {
-                foreach (var b in CreaterServerGameView.lettersbuttons)
+                if (msg.Contains("/username")) //если есть /username то добавляется в коллекцию боковой панели юзеров
+                    _usernames.Add(msg.Substring(0, msg.IndexOf('/')));
+                else
                 {
-                    if (Convert.ToChar(b.Content) == msg[0])
+                    foreach (var b in CreaterServerGameView.lettersbuttons) //в листе кнопок с буквами ищем ту, чей контент равен
+                    //тексту сообщения (нажатой букве другого юзера), после чего имитируем нажатие этой кнопки и включаем все кнопки
                     {
-                        _isMsgRecived = true;
-                        clickletter(b);
-                        foreach (var but in CreaterServerGameView.lettersbuttons)
+                        if (Convert.ToChar(b.Content) == msg[0])
                         {
-                            if (!_disabledButtons.Contains(but))
-                                but.IsEnabled = true;
+                            _isMsgRecived = true; //надо для того чтобы не циклилась отправка сообщений
+                            clickletter(b);
+                            foreach (var but in CreaterServerGameView.lettersbuttons)
+                            {
+                                if (!_disabledButtons.Contains(but)) //включаем кнопки если они не в листе нажатых
+                                    but.IsEnabled = true;
+                            }
+                            _isMsgRecived = false;
+                            break;
                         }
-                        _isMsgRecived = false;
-                        break;
                     }
                 }
             };
@@ -93,7 +101,7 @@ namespace prac17.ViewModel
 
         public void clickletter(Button sender) // при клике на букву
         {
-            if (_pickedWord.AmountOfAttempsRemain > 0)
+            if (_pickedWord.AmountOfAttempsRemain > 0) //если остались попытки
             {
                 if (_pickedWord.ThisWord.Contains((Convert.ToString(sender.Content).ToLower())))//проверка есть ли она в слове (хранится в переменной ThisWord)
                 {
@@ -165,11 +173,11 @@ namespace prac17.ViewModel
                 }
                 sender.IsEnabled = false; // вырубаем кнопку
                 sender.Visibility = Visibility.Hidden;
-                if (!_isMsgRecived)
+                if (!_isMsgRecived) //если пользователь сам нажал, а не нажатие было сымитировано
                 {
-                    TCPServer.SendMessageToAll(Convert.ToString(sender.Content));
+                    TCPServer.SendMessageToAll(Convert.ToString(sender.Content)); 
 
-                    foreach (var b in CreaterServerGameView.lettersbuttons)
+                    foreach (var b in CreaterServerGameView.lettersbuttons) //вырубаем все кнопки
                         b.IsEnabled = false;
                 }
                 if (CreaterServerGameView.spaceforletters.All(x => !string.IsNullOrEmpty(x.Text))) //проверяем если нет пустых текстблоков то победа

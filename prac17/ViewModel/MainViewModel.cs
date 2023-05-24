@@ -18,13 +18,13 @@ namespace prac17.ViewModel
         MainWindow window;
         #region Properties
 
-        private string enterNicknameTextbox;
-        public string EnterNicknameTextbox
+        private string _login;
+        public string Login
         {
-            get { return enterNicknameTextbox; }
+            get { return _login; }
             set
             {
-                enterNicknameTextbox = value;
+                _login = value;
                 OnPropertyChanged();
             }
         }
@@ -42,14 +42,14 @@ namespace prac17.ViewModel
         public void CreateServer()
         {
             window.Visibility = System.Windows.Visibility.Collapsed;
-            CreaterServerGameView creater = new CreaterServerGameView(EnterNicknameTextbox);
+            CreaterServerGameView creater = new CreaterServerGameView(Login);
             creater.Show();
             creater.Closed += new EventHandler(close);
         }
         public void JoinServer()
         {
             window.Visibility = System.Windows.Visibility.Collapsed;
-            EnterIPView creater = new EnterIPView(EnterNicknameTextbox);
+            EnterIPView creater = new EnterIPView(Login);
             creater.Show();
             creater.Closed += new EventHandler( close);
         }
