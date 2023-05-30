@@ -1,0 +1,6 @@
+C:\Users\я\source\repos\prac17\TCP\bin\Debug\TCP.dll
+C:\Users\я\source\repos\prac17\TCP\bin\Debug\TCP.pdb
+C:\Users\я\source\repos\prac17\TCP\obj\Debug\TCP.csproj.AssemblyReference.cache
+C:\Users\я\source\repos\prac17\TCP\obj\Debug\TCP.csproj.CoreCompileInputs.cache
+C:\Users\я\source\repos\prac17\TCP\obj\Debug\TCP.dll
+C:\Users\я\source\repos\prac17\TCP\obj\Debug\TCP.pdb

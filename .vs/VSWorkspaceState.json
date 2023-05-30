@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\prac17",
-    "\\prac17\\View"
+    "\\prac17\\View",
+    "\\prac17\\ViewModel",
+    "\\prac17\\ViewModel\\Helpers"
   ],
-  "SelectedNode": "\\prac17\\View\\EnterIPView.xaml.cs",
+  "SelectedNode": "\\prac17.sln",
   "PreviewInSolutionExplorer": false
 }

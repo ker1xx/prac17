@@ -1,15 +1,8 @@
-﻿using prac17.Model;
-using prac17.View;
+﻿using prac17.View;
 using prac17.ViewModel.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media.Animation;
 
 namespace prac17.ViewModel
 {
@@ -49,9 +42,16 @@ namespace prac17.ViewModel
         public void JoinServer()
         {
             window.Visibility = System.Windows.Visibility.Collapsed;
-            EnterIPView creater = new EnterIPView(Login);
-            creater.Show();
-            creater.Closed += new EventHandler( close);
+            EnterIPView giveipdesk = new EnterIPView(Login);
+            giveipdesk.Closed += new EventHandler(close);
+            if (Process.GetProcessesByName("RvRvpnGui").Any())
+            {
+                JoinToServerGameView joiner = new JoinToServerGameView(Login, "127.0.0.1");
+                joiner.Closed += new EventHandler(close);
+                joiner.Show();
+            }
+            else
+                giveipdesk.Show();
         }
         private void close(object sender, EventArgs args)
         {

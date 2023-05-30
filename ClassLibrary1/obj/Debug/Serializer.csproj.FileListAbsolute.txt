@@ -1,0 +1,9 @@
+C:\Users\я\source\repos\prac17\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\я\source\repos\prac17\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\я\source\repos\prac17\ClassLibrary1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\я\source\repos\prac17\ClassLibrary1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\я\source\repos\prac17\ClassLibrary1\obj\Debug\Serializer.csproj.AssemblyReference.cache
+C:\Users\я\source\repos\prac17\ClassLibrary1\obj\Debug\Serializer.csproj.CoreCompileInputs.cache
+C:\Users\я\source\repos\prac17\ClassLibrary1\obj\Debug\Serializer.csproj.CopyComplete
+C:\Users\я\source\repos\prac17\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\я\source\repos\prac17\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

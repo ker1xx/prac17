@@ -1,0 +1,12 @@
+C:\Users\я\source\repos\prac17\Serialize\bin\Debug\net6.0\Serialize.deps.json
+C:\Users\я\source\repos\prac17\Serialize\bin\Debug\net6.0\Serialize.dll
+C:\Users\я\source\repos\prac17\Serialize\bin\Debug\net6.0\Serialize.pdb
+C:\Users\я\source\repos\prac17\Serialize\obj\Debug\net6.0\Serialize.csproj.AssemblyReference.cache
+C:\Users\я\source\repos\prac17\Serialize\obj\Debug\net6.0\Serialize.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\я\source\repos\prac17\Serialize\obj\Debug\net6.0\Serialize.AssemblyInfoInputs.cache
+C:\Users\я\source\repos\prac17\Serialize\obj\Debug\net6.0\Serialize.AssemblyInfo.cs
+C:\Users\я\source\repos\prac17\Serialize\obj\Debug\net6.0\Serialize.csproj.CoreCompileInputs.cache
+C:\Users\я\source\repos\prac17\Serialize\obj\Debug\net6.0\Serialize.dll
+C:\Users\я\source\repos\prac17\Serialize\obj\Debug\net6.0\refint\Serialize.dll
+C:\Users\я\source\repos\prac17\Serialize\obj\Debug\net6.0\Serialize.pdb
+C:\Users\я\source\repos\prac17\Serialize\obj\Debug\net6.0\ref\Serialize.dll

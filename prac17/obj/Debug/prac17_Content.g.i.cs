@@ -8,15 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("additional/10var.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("additional/1var.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("additional/2var.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("additional/3var.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("additional/4var.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("additional/5var.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("additional/6var.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("additional/7var.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("additional/8var.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("additional/9var.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("viewmodel/helpers/additional/gamepics/darktheme/10var.jpg")]
 
 

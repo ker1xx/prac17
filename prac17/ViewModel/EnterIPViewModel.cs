@@ -1,7 +1,6 @@
 ﻿using prac17.View;
 using prac17.ViewModel.Helpers;
 using System;
-using System.Windows;
 
 namespace prac17.ViewModel
 {
@@ -23,8 +22,8 @@ namespace prac17.ViewModel
                 OnPropertyChanged();
             }
         }
-        public BindableCommand Connect { get;set; }
-            #endregion
+        public BindableCommand Connect { get; set; }
+        #endregion
         public EnterIPViewModel(EnterIPView a, string Login)
         {
             this.window = a;
@@ -36,7 +35,7 @@ namespace prac17.ViewModel
             window.Visibility = System.Windows.Visibility.Collapsed;
             JoinToServerGameView join = new JoinToServerGameView(IPText, Login);
             join.Show();
-            join.Closed +=  new EventHandler(close);
+            join.Closed += new EventHandler(close);
         }
         private void close(object sender, EventArgs args)
         {

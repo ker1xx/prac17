@@ -3,16 +3,10 @@ using prac17.View;
 using prac17.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
 using System.Windows;
-using System.Net.Sockets;
-using System.Threading;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 namespace prac17.ViewModel
@@ -51,7 +45,7 @@ namespace prac17.ViewModel
 
             _client.OnConnected += () =>
             {
-                _client.SendMessage(Login+"/username"); //при подключении срабатывает ивент, отправляющий имя пользователя
+                _client.SendMessage(Login + "/username"); //при подключении срабатывает ивент, отправляющий имя пользователя
             };
 
             _client.OnNewMessage += (msg) => //при получении нового смс срабатывает ивент
@@ -65,7 +59,7 @@ namespace prac17.ViewModel
                     //не рисовалась быстрее кода и появились кнопки
                     {
                         this.PicOfGame = PicOfGame;
-                        PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\Blank.png", UriKind.Relative));
+                        PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\Blank.png", UriKind.Relative));
                         for (int i = 0; i < PickedWord.ThisWord.Length; i++) //добавляем буквы в массив букв слова
                             LettersInWord.Add(PickedWord.ThisWord[i]);
                         JoinToServerGameView.IsConnected = true;
@@ -120,52 +114,52 @@ namespace prac17.ViewModel
                     {
                         case 9:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\1var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\1var.png", UriKind.Relative));
                                 break;
                             }
                         case 8:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\2var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\2var.png", UriKind.Relative));
                                 break;
                             }
                         case 7:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\3var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\3var.png", UriKind.Relative));
                                 break;
                             }
                         case 6:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\4var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\4var.png", UriKind.Relative));
                                 break;
                             }
                         case 5:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\5var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\5var.png", UriKind.Relative));
                                 break;
                             }
                         case 4:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\6var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\6var.png", UriKind.Relative));
                                 break;
                             }
                         case 3:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\7var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\7var.png", UriKind.Relative));
                                 break;
                             }
                         case 2:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\8var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\8var.png", UriKind.Relative));
                                 break;
                             }
                         case 1:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\9var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\9var.png", UriKind.Relative));
                                 break;
                             }
                         case 0:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\10var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\10var.png", UriKind.Relative));
                                 break;
                             }
                     }

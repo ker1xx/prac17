@@ -1,20 +1,13 @@
 ﻿using prac17.Model;
+using prac17.View;
 using prac17.ViewModel.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Controls;
-using System.Windows;
-using prac17.View;
 using System.Linq;
-using System.Security.RightsManagement;
-using System.Windows.Media;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using System.Windows.Input;
-using GalaSoft.MvvmLight.Command;
-using System.Net.Sockets;
-using System.Text;
-using System.Diagnostics;
 
 namespace prac17.ViewModel
 {
@@ -57,7 +50,7 @@ namespace prac17.ViewModel
         {
             Usernames.Add(Login);
             this.PicOfGame = PicOfGame; //картинку делаем глобальной
-            PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\Blank.png", UriKind.Relative)); //делаем картинке пустой соурс
+            PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\Blank.png", UriKind.Relative)); //делаем картинке пустой соурс
 
             Random rnd = new Random(); // делаем рандом
             string newWord = Deserialize.Word[rnd.Next(Deserialize.Word.Count - 1)].ThisWord; //генерим слово из джсона
@@ -121,52 +114,52 @@ namespace prac17.ViewModel
                     {
                         case 9:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\1var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\1var.png", UriKind.Relative));
                                 break;
                             }
                         case 8:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\2var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\2var.png", UriKind.Relative));
                                 break;
                             }
                         case 7:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\3var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\3var.png", UriKind.Relative));
                                 break;
                             }
                         case 6:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\4var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\4var.png", UriKind.Relative));
                                 break;
                             }
                         case 5:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\5var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\5var.png", UriKind.Relative));
                                 break;
                             }
                         case 4:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\6var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\6var.png", UriKind.Relative));
                                 break;
                             }
                         case 3:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\7var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\7var.png", UriKind.Relative));
                                 break;
                             }
                         case 2:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\8var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\8var.png", UriKind.Relative));
                                 break;
                             }
                         case 1:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\9var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\9var.png", UriKind.Relative));
                                 break;
                             }
                         case 0:
                             {
-                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\10var.png", UriKind.Relative));
+                                PicOfGame.Source = new BitmapImage(new Uri("..\\ViewModel\\Helpers\\Additional\\gamepics\\LightTheme\\10var.png", UriKind.Relative));
                                 break;
                             }
                     }
@@ -175,7 +168,7 @@ namespace prac17.ViewModel
                 sender.Visibility = Visibility.Hidden;
                 if (!_isMsgRecived) //если пользователь сам нажал, а не нажатие было сымитировано
                 {
-                    TCPServer.SendMessageToAll(Convert.ToString(sender.Content)); 
+                    TCPServer.SendMessageToAll(Convert.ToString(sender.Content));
 
                     foreach (var b in CreaterServerGameView.lettersbuttons) //вырубаем все кнопки
                         b.IsEnabled = false;

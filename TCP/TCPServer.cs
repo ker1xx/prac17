@@ -1,15 +1,13 @@
-﻿using prac17.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace prac17
 {
-    static class TCPServer
+    public class TCPServer
     {
         private static Socket _socket;
         private static List<Socket> _clients = new List<Socket>();
@@ -36,7 +34,7 @@ namespace prac17
 
         private static async Task ListenToClients()
         {
-            while(true)
+            while (true)
             {
                 var newClient = await _socket.AcceptAsync();
                 _clients.Add(newClient);
@@ -68,7 +66,7 @@ namespace prac17
         public static async Task SendMessage(Socket clientToSend, string message)
         {
             byte[] messageBuffer = Encoding.UTF8.GetBytes(message);
-            await clientToSend?.SendAsync(new ArraySegment<byte>(messageBuffer), SocketFlags.None);                
+            await clientToSend?.SendAsync(new ArraySegment<byte>(messageBuffer), SocketFlags.None);
         }
 
         public static async Task SendMessageToAll(string message)

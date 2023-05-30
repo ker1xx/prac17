@@ -1,19 +1,10 @@
-﻿using prac17.ViewModel.Helpers;
-using prac17.ViewModel;
-using System;
+﻿using prac17.ViewModel;
+using prac17.ViewModel.Helpers;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Runtime.CompilerServices;
 
 namespace prac17.View
 {
@@ -28,8 +19,8 @@ namespace prac17.View
         public JoinToServerGameView(string IP, string Login)
         {
             InitializeComponent();
-            DataContext = new ClientViewModel(PicOfGame, Login,IP);
-            
+            DataContext = new ClientViewModel(PicOfGame, Login, IP);
+
             GenerateLettersButtons();
             GenerateSpace();
         }
@@ -45,7 +36,7 @@ namespace prac17.View
                 PanelForLetters.Children.Add(button);
             }
         }
-        private async Task  GenerateSpace()
+        private async Task GenerateSpace()
         {
 
             while (!IsConnected)

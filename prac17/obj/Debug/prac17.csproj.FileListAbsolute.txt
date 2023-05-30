@@ -76,3 +76,5 @@ C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.Platform.
 C:\Users\klink\source\repos\prac17\prac17\bin\Debug\GalaSoft.MvvmLight.Platform.xml
 C:\Users\klink\source\repos\prac17\prac17\obj\Debug\View\EnterIPView.baml
 C:\Users\klink\source\repos\prac17\prac17\obj\Debug\View\EnterIPView.g.cs
+C:\Users\я\source\repos\prac17\prac17\bin\Debug\ClassLibrary1.dll
+C:\Users\я\source\repos\prac17\prac17\bin\Debug\ClassLibrary1.pdb

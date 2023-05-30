@@ -104,8 +104,6 @@
     <Compile Include="ViewModel\Helpers\BindableCommand.cs" />
     <Compile Include="ViewModel\Helpers\Binding.cs" />
     <Compile Include="ViewModel\Helpers\Deserialize.cs" />
-    <Compile Include="ViewModel\Helpers\TCPLogic\TCPClient.cs" />
-    <Compile Include="ViewModel\Helpers\TCPLogic\TCPServer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\CreaterServerGameView.xaml.cs">
       <DependentUpon>CreaterServerGameView.xaml</DependentUpon>
@@ -149,39 +147,105 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\10var.png">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\10var.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\1var.png">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\1var.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\2var.png">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\2var.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\3var.png">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\3var.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\4var.png">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\4var.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\5var.png">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\5var.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\6var.png">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\6var.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\7var.png">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\7var.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\8var.png">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\8var.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\9var.png">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\9var.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ViewModel\Helpers\Additional\gamepics\Blank.jpg">
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\LightTheme\Blank.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Serializer.csproj">
+      <Project>{685cde1e-6302-4c54-83c8-805c43eb23c9}</Project>
+      <Name>Serializer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TCP\TCP.csproj">
+      <Project>{9c2d5b39-a03c-4cb3-b86c-1244f906dd99}</Project>
+      <Name>TCP</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\1var.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\2var.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\3var.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\4var.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\5var.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\6var.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\7var.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\8var.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\9var.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ViewModel\Helpers\Additional\gamepics\DarkTheme\10var.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

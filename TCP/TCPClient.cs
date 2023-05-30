@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace prac17
 {
@@ -30,10 +27,10 @@ namespace prac17
             isWorking = new CancellationTokenSource();
             ReceiveMessages(isWorking.Token); //включение асинхронного таска получения сообщений
         }
-           
+
         private async Task ReceiveMessages(CancellationToken Token)
         {
-            while(!Token.IsCancellationRequested)
+            while (!Token.IsCancellationRequested)
             {
                 byte[] buffer = new byte[1024];
                 await _clientSocket?.ReceiveAsync(new ArraySegment<byte>(buffer), SocketFlags.None); //асинхронно ждет смску
